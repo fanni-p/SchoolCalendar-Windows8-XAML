@@ -1,0 +1,23 @@
+﻿<common:ViewBaseModel
+    x:Name="pageRoot"
+    x:Class="TimetableApp.Views.SettingsPanel"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TimetableApp.Views"
+    xmlns:common="using:TimetableApp.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewModels="using:TimetableApp.ViewModel"
+    mc:Ignorable="d">
+
+    <Page.DataContext>
+        <viewModels:SettingsPanelViewModel/>
+    </Page.DataContext>
+
+    <Grid>
+        <Button Command="{Binding LogoutCommand}" 
+                Content="Logout"
+                BorderThickness="0"/>
+    </Grid>
+
+</common:ViewBaseModel>

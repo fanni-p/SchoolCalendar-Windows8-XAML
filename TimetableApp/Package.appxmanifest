@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest">
+  <Identity Name="e1406f18-5b8f-48e1-b0b4-a30dd541b8ba" Publisher="CN=Fani" Version="1.0.0.0" />
+  <Properties>
+    <DisplayName>TimetableApp</DisplayName>
+    <PublisherDisplayName>Fani</PublisherDisplayName>
+    <Logo>Assets\50x50.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.2.1</OSMinVersion>
+    <OSMaxVersionTested>6.2.1</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="TimetableApp.App">
+      <VisualElements DisplayName="TimetableApp" Logo="Assets\150x150.png" SmallLogo="Assets\30x30.png" Description="TimetableApp" ForegroundText="light" BackgroundColor="#464646" ToastCapable="true">
+        <DefaultTile ShowName="allLogos" WideLogo="Assets\310x150.png" ShortName="School Timetable" />
+        <SplashScreen Image="Assets\620x300.png" />
+      </VisualElements>
+      <Extensions>
+        <Extension Category="windows.search" />
+        <Extension Category="windows.shareTarget">
+          <ShareTarget>
+            <DataFormat>.html</DataFormat>
+          </ShareTarget>
+        </Extension>
+      </Extensions>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="privateNetworkClientServer" />
+    <Capability Name="internetClient" />
+    <DeviceCapability Name="webcam" />
+  </Capabilities>
+</Package>

@@ -1,0 +1,146 @@
+﻿<Application 
+    x:Class="TimetableApp.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" 
+    xmlns:local="using:TimetableApp"
+    xmlns:common="using:TimetableApp.Common"
+    xmlns:converter="using:TimetableApp.Converters">
+
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <!-- 
+                    Styles that define common aspects of the platform look and feel
+                    Required by Visual Studio project and item templates
+                 -->
+                <ResourceDictionary Source="Common/StandardStyles.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+            
+            <x:String x:Key="AppName">School Timetable</x:String>
+
+            <Style x:Key="PageHeaderTextStyle" TargetType="TextBlock" BasedOn="{StaticResource HeaderTextStyle}">
+                <Setter Property="TextWrapping" Value="NoWrap"/>
+                <Setter Property="VerticalAlignment" Value="Bottom"/>
+                <Setter Property="Margin" Value="0,0,30,40"/>
+                <Setter Property="Foreground" Value="White" />
+            </Style>
+
+            <Style x:Key="WeekScheduleTextBlock" TargetType="TextBlock">
+                <Setter Property="FontSize" Value="14" />
+                <Setter Property="Foreground" Value="{StaticResource ApplicationPageBackgroundThemeBrush}"/>
+                <Setter Property="Margin" Value="5,0,0,0" />
+            </Style>
+
+            <DataTemplate x:Key="LessonTemplate">
+                <StackPanel Orientation="Vertical" Background="{Binding Path=SubjectColor}">
+                    <TextBlock Text="{Binding Path=Subject}" 
+                               Width="185"  
+                               FontSize="20" 
+                               Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                    <StackPanel Orientation="Horizontal"
+                                Width="185">
+                        <TextBlock Text="Lesson type - " 
+                                   Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                        <TextBlock Text="{Binding Path=Type}"
+                                   Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Width="185">
+                        <TextBlock Text="Room - " 
+                                   Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                        <TextBlock Text="{Binding Path=LessonRoom}"
+                                   Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Width="185">
+                        <TextBlock Text="{Binding Path=StartTimeString}"
+                                   Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                        <TextBlock Text=" - "
+                                   Margin="0"
+                                   Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                        <TextBlock Text="{Binding Path=EndTimeString}"
+                                   Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                    </StackPanel>
+                </StackPanel>
+            </DataTemplate>
+
+            <DataTemplate x:Key="HomeworksTemplate">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Path=Subject, Mode=TwoWay}"
+                               Foreground="{Binding Path=ForegroundColor}"
+                               Width="150" 
+                               Margin="0, 5, 5, 5" 
+                               FontSize="20" 
+                               FontWeight="Bold"/>
+                    <TextBlock Text="{Binding Path=DateAsString, Mode=TwoWay}"
+                               HorizontalAlignment="Center"
+                               Foreground="{Binding Path=ForegroundColor}"
+                               Margin="5" 
+                               FontSize="20"
+                               FontWeight="Bold"/>
+                    <TextBlock Text="Days left: "
+                               Foreground="{Binding Path=ForegroundColor}"
+                               Margin="5" 
+                               FontSize="20"
+                               FontWeight="Bold"/>
+                    <TextBlock Text="{Binding Path=DaysLeft, Mode=TwoWay}"
+                               Margin="5"
+                               Foreground="{Binding Path=ForegroundColor}"
+                               HorizontalAlignment="Center"
+                               VerticalAlignment="Center"
+                               FontSize="20"
+                               FontWeight="Bold"/>
+                </StackPanel>
+            </DataTemplate>
+
+            <DataTemplate x:Key="SubjectsTemplate">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="{Binding Path=Name, Mode=TwoWay}" 
+                               Width="200" 
+                               Margin="10" 
+                               FontSize="20"
+                               Foreground="White"/>
+                    <Canvas Width="40" Height="40" Background="{Binding Color}" />
+                </StackPanel>
+            </DataTemplate>
+
+            <DataTemplate x:Key="SubjectLessonsTemplate">
+                <StackPanel Orientation="Vertical" Background="{Binding Path=SubjectColor}">
+                    <TextBlock Text="{Binding Path=Subject}" 
+                               Width="185"  
+                               FontSize="20" 
+                               Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                    <TextBlock Text="{Binding Path=Day}" 
+                               Width="185"  
+                               FontSize="20" 
+                               Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                    <StackPanel Orientation="Horizontal"
+                                Width="185">
+                        <TextBlock Text="Lesson type - " 
+                                   Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                        <TextBlock Text="{Binding Path=Type}"
+                                   Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Width="185">
+                        <TextBlock Text="Room - " 
+                                   Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                        <TextBlock Text="{Binding Path=LessonRoom}"
+                                   Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal"
+                                Width="185">
+                        <TextBlock Text="{Binding Path=StartTimeString}"
+                                   Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                        <TextBlock Text=" - "
+                                   Margin="0"
+                                   Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                        <TextBlock Text="{Binding Path=EndTimeString}"
+                                   Style="{StaticResource ResourceKey=WeekScheduleTextBlock}"/>
+                    </StackPanel>
+                </StackPanel>
+            </DataTemplate>
+
+        </ResourceDictionary>
+    </Application.Resources>
+</Application>
